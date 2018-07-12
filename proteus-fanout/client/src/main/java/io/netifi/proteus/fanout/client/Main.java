@@ -108,6 +108,7 @@ public class Main {
     RandomStringRequest request = RandomStringRequest.newBuilder().setMin(min).setMax(max).build();
     return randomStringGeneratorClient
         .generateString(request)
+        .doOnNext(r -> System.out.println("going to count -> " + r.getGenerated()))
         .map(RandomStringResponse::getGenerated);
   }
 

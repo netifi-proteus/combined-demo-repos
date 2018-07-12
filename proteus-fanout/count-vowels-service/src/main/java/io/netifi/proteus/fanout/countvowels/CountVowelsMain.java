@@ -18,8 +18,8 @@ public class CountVowelsMain {
   public static void main(String... args) throws Exception {
       long accessKey = Long.getLong("ACCESS_KEY", 9007199254740991L);
       String accessToken = System.getProperty("ACCESS_TOKEN", "kTBDVtfRBO4tHOnZzSyY5ym2kfY=");
-    String host = System.getProperty("BROKER_HOST", "edge.prd.netifi.io");
-    int port = Integer.getInteger("BROKER_PORT", 8001);
+      String host = System.getProperty("BROKER_HOST", "broker.prd.netifi.io");
+      int port = Integer.getInteger("BROKER_PORT", 30001);
     String destination = UUID.randomUUID().toString();
 
     System.out.println("system properties [");

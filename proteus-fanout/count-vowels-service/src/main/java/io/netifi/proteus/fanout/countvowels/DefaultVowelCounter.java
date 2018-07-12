@@ -40,7 +40,6 @@ public class DefaultVowelCounter implements VowelCounter {
   private Mono<IsVowelResponse> checkVowel(IsVowelRequest request) {
     return vowelChecker
         .isVowel(request)
-        .timeout(Duration.ofSeconds(10))
         .doOnError(throwable -> logger.error("error checking if vowel"))
         .retry();
   }
