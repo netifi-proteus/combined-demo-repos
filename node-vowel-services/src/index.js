@@ -68,7 +68,7 @@ let brokerPort = process.argv[3];
 
 
 if(!brokerHost){
-    brokerHost = "localhost";
+    brokerHost = "edge.prd.netifi.io";
 }
 
 if(!brokerPort){

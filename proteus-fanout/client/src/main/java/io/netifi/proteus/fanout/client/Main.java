@@ -29,7 +29,7 @@ public class Main {
   public Main() {
     long accessKey = Long.getLong("ACCESS_KEY", 3855261330795754807L);
     String accessToken = System.getProperty("ACCESS_TOKEN", "kTBDVtfRBO4tHOnZzSyY5ym2kfY=");
-    String host = System.getProperty("BROKER_HOST", "localhost");
+    String host = System.getProperty("BROKER_HOST", "edge.prd.netifi.io");
     int port = Integer.getInteger("BROKER_PORT", 8001);
 
     System.out.println("system properties [");
