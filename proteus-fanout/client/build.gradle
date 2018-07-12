@@ -12,6 +12,8 @@ buildscript {
 plugins {
     id 'java'
     id 'application'
+    id 'org.springframework.boot' version '2.0.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.5.RELEASE'
 }
 
 apply plugin: 'com.bmuschko.docker-java-application'
@@ -32,19 +34,17 @@ docker {
 
 sourceCompatibility = 1.8
 
+dependencyManagement {
+    imports {
+        mavenBom "io.spring.platform:platform-bom:${springbomVersion}"
+    }
+}
+
 dependencies {
     compile project(':count-vowels-service-idl')
     compile project(':random-string-service-idl')
 
-    compile "io.netifi.proteus:client:$proteusVersion"
-
-    compile 'com.google.protobuf:protobuf-java:3.5.0'
-
-    compile 'org.apache.logging.log4j:log4j-api:2.8.2'
-    compile 'org.apache.logging.log4j:log4j-core:2.8.2'
-    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.8.2'
-
-    compile 'io.micrometer:micrometer-registry-atlas:1.0.3'
+    compile 'com.netifi.proteus:proteus-spring-boot-starter:0.3.2'
 }
 
 mainClassName = 'io.netifi.proteus.fanout.client.Main'
@@ -68,3 +68,11 @@ applicationDefaultJvmArgs = [
         '-XX:NumberOfGCLogFiles=10',
         '-XX:GCLogFileSize=100M'
 ]
+
+configurations.all {
+    resolutionStrategy {
+        dependencySubstitution {
+            substitute module('com.google.guava:guava') with module('com.google.guava:guava:22.0')
+        }
+    }
+}

@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class MainRunner implements CommandLineRunner {
-  private static final Logger logger = LogManager.getLogger(Main_old.class);
+  private static final Logger logger = LogManager.getLogger(Main.class);
 
   private int min = Integer.getInteger("MIN", 5);
   private int max = Integer.getInteger("MAX", 25);

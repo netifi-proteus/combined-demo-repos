@@ -8,6 +8,7 @@ subprojects {
     // Proteus Versions
     ext {
         proteusVersion = '0.7.18'
+        springbomVersion = 'Cairo-SR1'
     }
     repositories {
         mavenLocal()
