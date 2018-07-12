@@ -1,0 +1,11 @@
+subprojects {
+    apply plugin: 'idea'
+
+    group 'io.netifi.proteus.chatDemo'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+}
