@@ -12,7 +12,10 @@ service VowelCounter {
     rpc CountVowels (CountRequest) returns (CountResponse) {}
 }
 
-message ChatMessage {
-    string message = 1;
+message CountRequest {
+    string target = 1;
 }
 
+message CountResponse {
+    int32 count = 1;
+}
