@@ -1,0 +1,71 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-docker-plugin:3.2.3'
+    }
+}
+
+
+plugins {
+    id 'java'
+    id 'application'
+}
+
+apply plugin: 'com.bmuschko.docker-java-application'
+
+docker {
+    registryCredentials {
+        url = 'https://netifi.azurecr.io'
+        username = 'netifi'
+        password = 'xv06MJfkZA17wCmy1v9e7kanMtvTsg5+'
+    }
+    javaApplication {
+        baseImage = 'openjdk:8-jre-alpine'
+        maintainer = 'Netifi'
+        ports = []
+        tag = "netifi.azurecr.io/soak-test/count-vowels-service:latest"
+    }
+}
+
+sourceCompatibility = 1.8
+
+dependencies {
+    compile project(':count-vowels-service-idl')
+    compile project(':is-vowel-service-idl')
+
+    compile "io.netifi.proteus:client:$proteusVersion"
+    compile 'com.google.protobuf:protobuf-java:3.5.0'
+    compile 'io.micrometer:micrometer-registry-atlas:1.0.3'
+
+    compile 'org.apache.logging.log4j:log4j-api:2.8.2'
+    compile 'org.apache.logging.log4j:log4j-core:2.8.2'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.8.2'
+
+    compile 'com.lmax:disruptor:3.3.6'
+}
+
+mainClassName = 'io.netifi.proteus.fanout.countvowels.CountVowelsMain'
+
+applicationDefaultJvmArgs = [
+        '-XX:+UnlockExperimentalVMOptions',
+        '-XX:+UseCGroupMemoryLimitForHeap',
+        '-XX:MaxRAMFraction=1',
+        '-XX:+UseG1GC',
+        '-XX:MaxGCPauseMillis=200',
+        '-XX:+AlwaysPreTouch',
+        '-XX:+UseStringDeduplication',
+        '-XX:+ExplicitGCInvokesConcurrent',
+        '-XX:+ParallelRefProcEnabled',
+        '-XX:HeapDumpPath=/',
+        '-XX:+PrintGCDateStamps',
+        '-verbose:gc',
+        '-XX:+PrintGCDetails',
+        '-Xloggc:gc.log',
+        '-XX:+UseGCLogFileRotation',
+        '-XX:NumberOfGCLogFiles=10',
+        '-XX:GCLogFileSize=100M',
+        '-DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector'
+]
