@@ -1,0 +1,4 @@
+rootProject.name = 'proteus-service-scaffold'
+include 'service-idl'
+include 'service'
+
