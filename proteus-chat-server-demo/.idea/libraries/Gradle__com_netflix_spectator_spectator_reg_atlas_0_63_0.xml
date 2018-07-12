@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.netflix.spectator:spectator-reg-atlas:0.63.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.netflix.spectator/spectator-reg-atlas/0.63.0/edc99a328fed6bff2b02276ccb5b66be32677456/spectator-reg-atlas-0.63.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.netflix.spectator/spectator-reg-atlas/0.63.0/5deb24807bc9c6aec6a91b0c31f2dab10d0baa27/spectator-reg-atlas-0.63.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

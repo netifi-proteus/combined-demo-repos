@@ -23,10 +23,11 @@ sourceSets {
 protobuf {
     generatedFilesBaseDir = "${projectDir}/src/generated"
 
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.6.0'
+    }
+
     plugins {
-        protoc {
-            artifact = 'com.google.protobuf:protoc:3.5.0'
-        }
         proteus {
             artifact = "io.netifi.proteus:protobuf-rpc:$proteusVersion"
         }

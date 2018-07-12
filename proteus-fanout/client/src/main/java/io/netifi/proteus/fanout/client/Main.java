@@ -27,8 +27,8 @@ public class Main {
   private VowelCounterClient vowelCounterClient;
 
   public Main() {
-    long accessKey = Long.getLong("ACCESS_KEY", 3855261330795754807L);
-    String accessToken = System.getProperty("ACCESS_TOKEN", "kTBDVtfRBO4tHOnZzSyY5ym2kfY=");
+      long accessKey = Long.getLong("ACCESS_KEY", 9007199254740991L);
+      String accessToken = System.getProperty("ACCESS_TOKEN", "kTBDVtfRBO4tHOnZzSyY5ym2kfY=");
     String host = System.getProperty("BROKER_HOST", "edge.prd.netifi.io");
     int port = Integer.getInteger("BROKER_PORT", 8001);
 
@@ -93,10 +93,10 @@ public class Main {
   private void countVowelsFromStrings(int min, int max, int numberOfValues) {
     Integer total =
         getRandomStringsFlux(min, max)
-            // .flatMap(this::countVowels)
-            .flatMap(s -> countVowels(s), 64)
+            .flatMap(this::countVowels)
+            .doOnError(Throwable::printStackTrace)
             .scan(0, (c1, c2) -> c1 + c2)
-            .filter(count -> count % 1000 == 0)
+           // .filter(count -> count % 1000 == 0)
             .doOnNext(count -> logger.info("vowels currently found -> " + count))
             .takeUntil(count -> count >= numberOfValues)
             .blockLast();

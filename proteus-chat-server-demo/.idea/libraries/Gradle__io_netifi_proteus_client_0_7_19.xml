@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: io.netifi.proteus:client:0.7.19">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netifi.proteus/client/0.7.19/560122debd20c1bd69d52d16c37cce410c35003f/client-0.7.19.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netifi.proteus/client/0.7.19/3b1665f8ecbff4b2238f5146a429bdf340739fdd/client-0.7.19-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chat-idl/chat-idl.iml" filepath="$PROJECT_DIR$/.idea/modules/chat-idl/chat-idl.iml" group="chat-idl" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chat-idl/chat-idl_main.iml" filepath="$PROJECT_DIR$/.idea/modules/chat-idl/chat-idl_main.iml" group="chat-idl" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chat-idl/chat-idl_test.iml" filepath="$PROJECT_DIR$/.idea/modules/chat-idl/chat-idl_test.iml" group="chat-idl" />
+      <module fileurl="file://$PROJECT_DIR$/proteus-chat-server-demo.iml" filepath="$PROJECT_DIR$/proteus-chat-server-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/random-string-chat-service/random-string-chat-service.iml" filepath="$PROJECT_DIR$/.idea/modules/random-string-chat-service/random-string-chat-service.iml" group="random-string-chat-service" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/random-string-chat-service/random-string-chat-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/random-string-chat-service/random-string-chat-service_main.iml" group="random-string-chat-service" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/random-string-chat-service/random-string-chat-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/random-string-chat-service/random-string-chat-service_test.iml" group="random-string-chat-service" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/random-string-idl/random-string-idl.iml" filepath="$PROJECT_DIR$/.idea/modules/random-string-idl/random-string-idl.iml" group="random-string-idl" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/random-string-idl/random-string-idl_main.iml" filepath="$PROJECT_DIR$/.idea/modules/random-string-idl/random-string-idl_main.iml" group="random-string-idl" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/random-string-idl/random-string-idl_test.iml" filepath="$PROJECT_DIR$/.idea/modules/random-string-idl/random-string-idl_test.iml" group="random-string-idl" />
+    </modules>
+  </component>
+</project>

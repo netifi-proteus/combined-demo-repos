@@ -15,9 +15,9 @@ public class VowelCheckerMain {
   private static final Logger logger = LogManager.getLogger(VowelCheckerMain.class);
 
   public static void main(String... args) throws Exception {
-    long accessKey = Long.getLong("ACCESS_KEY", 3855261330795754807L);
-    String accessToken = System.getProperty("ACCESS_TOKEN", "kTBDVtfRBO4tHOnZzSyY5ym2kfY=");
-    String host = System.getProperty("BROKER_HOST", "localhost");
+      long accessKey = Long.getLong("ACCESS_KEY", 9007199254740991L);
+      String accessToken = System.getProperty("ACCESS_TOKEN", "kTBDVtfRBO4tHOnZzSyY5ym2kfY=");
+    String host = System.getProperty("BROKER_HOST", "edge.prd.netifi.io");
     int port = Integer.getInteger("BROKER_PORT", 8001);
     int low = Integer.getInteger("LOW", 250);
     int high = Integer.getInteger("HIGH", 1500);

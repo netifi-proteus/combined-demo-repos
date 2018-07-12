@@ -44,7 +44,7 @@ dependencies {
     compile 'org.apache.logging.log4j:log4j-core:2.8.2'
     compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.8.2'
 
-    compile 'io.micrometer:micrometer-registry-atlas:1.0.2'
+    compile 'io.micrometer:micrometer-registry-atlas:1.0.3'
 }
 
 mainClassName = 'io.netifi.proteus.fanout.client.Main'
