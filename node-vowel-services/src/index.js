@@ -68,11 +68,11 @@ let brokerPort = process.argv[3];
 
 
 if(!brokerHost){
-    brokerHost = "edge.prd.netifi.io";
+    brokerHost = "broker.prd.netifi.io";
 }
 
 if(!brokerPort){
-    brokerPort = 8001
+    brokerPort = 30001
 }
 // This Proteus object acts as our gateway to both send messages to services and to register services that we support
 const vowelCountConnection = new RSocketTcpClient(
