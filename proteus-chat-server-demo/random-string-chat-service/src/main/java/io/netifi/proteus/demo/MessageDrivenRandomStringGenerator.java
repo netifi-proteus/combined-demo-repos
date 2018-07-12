@@ -9,17 +9,15 @@ import io.netifi.proteus.fanout.randomstring.RandomStringResponse;
 import io.netty.buffer.ByteBuf;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import reactor.core.publisher.DirectProcessor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.WorkQueueProcessor;
-import reactor.core.scheduler.Schedulers;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MessageDrivenRandomStringGenerator implements RandomStringGenerator, Chat {
   private static final Logger logger =
-      LogManager.getLogger(MessageDrivenRandomStringGenerator_old.class);
+      LogManager.getLogger(MessageDrivenRandomStringGenerator.class);
 
   private final WorkQueueProcessor<Character> _buffer;
 

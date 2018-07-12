@@ -1,6 +1,12 @@
 subprojects {
     apply plugin: 'idea'
 
+    ext {
+        protobufVersion = '3.6.0'
+        proteusVersion = '0.7.19'
+        springbomVersion = 'Cairo-SR1'
+    }
+
     group 'io.netifi.proteus.chatDemo'
     version '1.0-SNAPSHOT'
 

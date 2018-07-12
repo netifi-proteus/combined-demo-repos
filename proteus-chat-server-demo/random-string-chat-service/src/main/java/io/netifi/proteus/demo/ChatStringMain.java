@@ -1,13 +1,12 @@
 package io.netifi.proteus.demo;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.netflix.spectator.atlas.AtlasConfig;
 import io.micrometer.atlas.AtlasMeterRegistry;
 import io.netifi.proteus.Proteus;
-import io.netifi.proteus.fanout.randomstring.RandomStringGeneratorServer;
 import io.netifi.proteus.demo.chat.ChatServer;
+import io.netifi.proteus.fanout.randomstring.RandomStringGeneratorServer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.Duration;
 import java.util.Optional;

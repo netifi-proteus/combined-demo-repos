@@ -1,17 +1,55 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-docker-plugin:3.2.3'
+    }
+}
+
 plugins {
     id 'java'
     id 'application'
+    id 'org.springframework.boot' version '2.0.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.5.RELEASE'
 }
+
+apply plugin: 'com.bmuschko.docker-java-application'
+
+docker {
+    registryCredentials {
+        url = 'https://netifi.azurecr.io'
+        username = 'netifi'
+        password = 'xv06MJfkZA17wCmy1v9e7kanMtvTsg5+'
+    }
+    javaApplication {
+        baseImage = 'openjdk:8-jre-alpine'
+        maintainer = 'Netifi'
+        ports = []
+        tag = "netifi.azurecr.io/fanout/proteus-chat-server-demo:latest"
+    }
+}
+
 
 group 'io.netifi.proteus.chatDemo'
 version '1.0-SNAPSHOT'
+
+mainClassName = 'io.netifi.proteus.demo.ChatStringMain'
+sourceCompatibility = 1.8
+
+dependencyManagement {
+    imports {
+        mavenBom "io.spring.platform:platform-bom:${springbomVersion}"
+    }
+}
+
 
 repositories {
     mavenLocal()
     jcenter()
 }
 
-sourceCompatibility = 1.8
 
 dependencies {
     compile project(":chat-idl")
@@ -48,3 +86,11 @@ applicationDefaultJvmArgs = [
         '-XX:GCLogFileSize=100M',
         '-DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector'
 ]
+
+configurations.all {
+    resolutionStrategy {
+        dependencySubstitution {
+            substitute module('com.google.guava:guava') with module('com.google.guava:guava:22.0')
+        }
+    }
+}
