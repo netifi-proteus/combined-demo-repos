@@ -1,5 +1,6 @@
 import React from 'react';
-import Rx from 'rxjs/Rx';
+import {fromEvent, pipe} from 'rxjs';
+import {map, distinctUntilChanged, debounceTime} from 'rxjs/operators';
 import '../styles/login.scss';
 import { joinChat } from '../actions/chat';
 import { connect } from 'react-redux';
@@ -37,12 +38,11 @@ class Login extends React.Component {
 
   componentDidMount(){
     this.aliasInput &&
-      Rx.Observable.
-      fromEvent(this.aliasInput,'keyup').
-      map(e => e.target.value).
-      distinctUntilChanged().
-      debounceTime(500).
-      subscribe(this.updateAvatar.bind(this))
+      fromEvent(this.aliasInput,'keyup').pipe(
+          map(e => e.target.value),
+          distinctUntilChanged(),
+          debounceTime(500)
+      ).subscribe(this.updateAvatar.bind(this))
   }
 
   render() {
