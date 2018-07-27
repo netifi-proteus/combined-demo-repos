@@ -1,7 +1,7 @@
 package io.netifi.proteus.fanout.randomstring;
 
 @javax.annotation.Generated(
-    value = "by Proteus proto compiler (version 0.7.18)",
+    value = "by Proteus proto compiler (version 0.8.5)",
     comments = "Source: io/netifi/proteus/fanout/countvowels/service.proto")
 @io.netifi.proteus.annotations.internal.ProteusGenerated(
     type = io.netifi.proteus.annotations.internal.ProteusResourceType.SERVICE,
@@ -10,14 +10,24 @@ package io.netifi.proteus.fanout.randomstring;
     value ="RandomStringGeneratorServer")
 public final class RandomStringGeneratorServer extends io.netifi.proteus.AbstractProteusService {
   private final RandomStringGenerator service;
+  private final io.opentracing.Tracer tracer;
   private final java.util.function.Function<? super org.reactivestreams.Publisher<io.rsocket.Payload>, ? extends org.reactivestreams.Publisher<io.rsocket.Payload>> generateString;
+  private final java.util.function.Function<io.opentracing.SpanContext, java.util.function.Function<? super org.reactivestreams.Publisher<io.rsocket.Payload>, ? extends org.reactivestreams.Publisher<io.rsocket.Payload>>> generateStringTrace;
   @javax.inject.Inject
-  public RandomStringGeneratorServer(RandomStringGenerator service, java.util.Optional<io.micrometer.core.instrument.MeterRegistry> registry) {
+  public RandomStringGeneratorServer(RandomStringGenerator service, java.util.Optional<io.micrometer.core.instrument.MeterRegistry> registry, java.util.Optional<io.opentracing.Tracer> tracer) {
     this.service = service;
     if (!registry.isPresent()) {
       this.generateString = java.util.function.Function.identity();
     } else {
       this.generateString = io.netifi.proteus.metrics.ProteusMetrics.timed(registry.get(), "proteus.server", "service", RandomStringGenerator.SERVICE, "method", RandomStringGenerator.METHOD_GENERATE_STRING);
+    }
+
+    if (!tracer.isPresent()) {
+      this.tracer = null;
+      this.generateStringTrace = io.netifi.proteus.tracing.ProteusTracing.traceAsChild();
+    } else {
+      this.tracer = tracer.get();
+      this.generateStringTrace = io.netifi.proteus.tracing.ProteusTracing.traceAsChild(this.tracer, RandomStringGenerator.METHOD_GENERATE_STRING, io.netifi.proteus.tracing.Tag.of("proteus.service", RandomStringGenerator.SERVICE), io.netifi.proteus.tracing.Tag.of("proteus.type", "server"), io.netifi.proteus.tracing.Tag.of("proteus.version", "0.8.5"));
     }
 
   }
@@ -46,10 +56,11 @@ public final class RandomStringGeneratorServer extends io.netifi.proteus.Abstrac
   public reactor.core.publisher.Flux<io.rsocket.Payload> requestStream(io.rsocket.Payload payload) {
     try {
       io.netty.buffer.ByteBuf metadata = payload.sliceMetadata();
+      io.opentracing.SpanContext spanContext = io.netifi.proteus.tracing.ProteusTracing.deserializeTracingMetadata(tracer, metadata);
       switch(io.netifi.proteus.frames.ProteusMetadata.getMethod(metadata)) {
         case RandomStringGenerator.METHOD_GENERATE_STRING: {
           com.google.protobuf.CodedInputStream is = com.google.protobuf.CodedInputStream.newInstance(payload.getData());
-          return service.generateString(io.netifi.proteus.fanout.randomstring.RandomStringRequest.parseFrom(is), metadata).map(serializer).transform(generateString);
+          return service.generateString(io.netifi.proteus.fanout.randomstring.RandomStringRequest.parseFrom(is), metadata).map(serializer).transform(generateString).transform(generateStringTrace.apply(spanContext));
         }
         default: {
           return reactor.core.publisher.Flux.error(new UnsupportedOperationException());

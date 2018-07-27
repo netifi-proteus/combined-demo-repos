@@ -39,14 +39,14 @@ public class MessageDrivenRandomStringGenerator implements RandomStringGenerator
         .flatMap(
             i -> {
               return _buffer
-                         .limitRate(i)
+                  .limitRate(i)
                   .take(i)
                   .reduce(
                       "",
                       (s, c) -> {
                         return s + c;
                       });
-            })
+            }, 8)
         .map(s -> RandomStringResponse.newBuilder().setGenerated(s).build())
         .doOnError(Throwable::printStackTrace)
         .doOnNext(s -> logger.info(s.toString()));

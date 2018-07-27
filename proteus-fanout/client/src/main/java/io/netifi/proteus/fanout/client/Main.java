@@ -4,7 +4,7 @@ import com.netifi.proteus.springboot.EnableProteus;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/** Starts the Fanout Client */
+
 @SpringBootApplication
 @EnableProteus(group = "fanout.client")
 public class Main {

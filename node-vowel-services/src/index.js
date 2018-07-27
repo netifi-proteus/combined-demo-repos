@@ -96,4 +96,4 @@ vowelCounterProteus._connect();
 http.createServer(function (req, res) {
     res.write('Shhhh, I\'m counting vowels'); //write a response to the client
     res.end(); //end the response
-}).listen(9090);
+}).listen(65134);

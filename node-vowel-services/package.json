@@ -14,9 +14,11 @@
 	},
 	"dependencies": {
 		"http": "^0.0.0",
-		"proteus-js-client": "^0.0.5",
+		"proteus-js-client": "^0.0.8",
 		"rsocket-core": "^0.0.8",
 		"rsocket-flowable": "^0.0.8",
-		"rsocket-tcp-client": "^0.0.8"
+		"rsocket-tcp-client": "^0.0.8",
+     "rxjs-compat": "^6.2.2",
+		"lodash.clone": "^4.5.0"
 	}
 }

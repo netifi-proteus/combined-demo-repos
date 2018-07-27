@@ -1,7 +1,7 @@
 package io.netifi.proteus.fanout.isvowel;
 
 @javax.annotation.Generated(
-    value = "by Proteus proto compiler (version 0.7.18)",
+    value = "by Proteus proto compiler (version 0.8.5)",
     comments = "Source: io/netifi/proteus/fanout/isvowel/service.proto")
 @io.netifi.proteus.annotations.internal.ProteusGenerated(
     type = io.netifi.proteus.annotations.internal.ProteusResourceType.SERVICE,
@@ -10,14 +10,24 @@ package io.netifi.proteus.fanout.isvowel;
     value ="VowelCheckerServer")
 public final class VowelCheckerServer extends io.netifi.proteus.AbstractProteusService {
   private final VowelChecker service;
+  private final io.opentracing.Tracer tracer;
   private final java.util.function.Function<? super org.reactivestreams.Publisher<io.rsocket.Payload>, ? extends org.reactivestreams.Publisher<io.rsocket.Payload>> isVowel;
+  private final java.util.function.Function<io.opentracing.SpanContext, java.util.function.Function<? super org.reactivestreams.Publisher<io.rsocket.Payload>, ? extends org.reactivestreams.Publisher<io.rsocket.Payload>>> isVowelTrace;
   @javax.inject.Inject
-  public VowelCheckerServer(VowelChecker service, java.util.Optional<io.micrometer.core.instrument.MeterRegistry> registry) {
+  public VowelCheckerServer(VowelChecker service, java.util.Optional<io.micrometer.core.instrument.MeterRegistry> registry, java.util.Optional<io.opentracing.Tracer> tracer) {
     this.service = service;
     if (!registry.isPresent()) {
       this.isVowel = java.util.function.Function.identity();
     } else {
       this.isVowel = io.netifi.proteus.metrics.ProteusMetrics.timed(registry.get(), "proteus.server", "service", VowelChecker.SERVICE, "method", VowelChecker.METHOD_IS_VOWEL);
+    }
+
+    if (!tracer.isPresent()) {
+      this.tracer = null;
+      this.isVowelTrace = io.netifi.proteus.tracing.ProteusTracing.traceAsChild();
+    } else {
+      this.tracer = tracer.get();
+      this.isVowelTrace = io.netifi.proteus.tracing.ProteusTracing.traceAsChild(this.tracer, VowelChecker.METHOD_IS_VOWEL, io.netifi.proteus.tracing.Tag.of("proteus.service", VowelChecker.SERVICE), io.netifi.proteus.tracing.Tag.of("proteus.type", "server"), io.netifi.proteus.tracing.Tag.of("proteus.version", "0.8.5"));
     }
 
   }
@@ -41,10 +51,11 @@ public final class VowelCheckerServer extends io.netifi.proteus.AbstractProteusS
   public reactor.core.publisher.Mono<io.rsocket.Payload> requestResponse(io.rsocket.Payload payload) {
     try {
       io.netty.buffer.ByteBuf metadata = payload.sliceMetadata();
+      io.opentracing.SpanContext spanContext = io.netifi.proteus.tracing.ProteusTracing.deserializeTracingMetadata(tracer, metadata);
       switch(io.netifi.proteus.frames.ProteusMetadata.getMethod(metadata)) {
         case VowelChecker.METHOD_IS_VOWEL: {
           com.google.protobuf.CodedInputStream is = com.google.protobuf.CodedInputStream.newInstance(payload.getData());
-          return service.isVowel(io.netifi.proteus.fanout.isvowel.IsVowelRequest.parseFrom(is), metadata).map(serializer).transform(isVowel);
+          return service.isVowel(io.netifi.proteus.fanout.isvowel.IsVowelRequest.parseFrom(is), metadata).map(serializer).transform(isVowel).transform(isVowelTrace.apply(spanContext));
         }
         default: {
           return reactor.core.publisher.Mono.error(new UnsupportedOperationException());

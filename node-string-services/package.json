@@ -14,7 +14,7 @@
 	},
 	"dependencies": {
 		"http": "^0.0.0",
-		"proteus-js-client": "^0.0.5",
+		"proteus-js-client": "^0.0.8",
 		"rsocket-core": "^0.0.8",
 		"rsocket-flowable": "^0.0.8",
 		"rsocket-tcp-client": "^0.0.8"

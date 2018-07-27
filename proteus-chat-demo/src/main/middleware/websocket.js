@@ -96,4 +96,3 @@ function factory({messageToActionAdapter}) {
   };
 }
 export default factory;
-

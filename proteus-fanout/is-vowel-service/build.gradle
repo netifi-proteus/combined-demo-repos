@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.bmuschko:gradle-docker-plugin:3.2.3'
+        classpath 'com.bmuschko:gradle-docker-plugin:3.2.5'
     }
 }
 
@@ -34,7 +34,8 @@ dependencies {
     compile project(':is-vowel-service-idl')
 
     compile "io.netifi.proteus:client:$proteusVersion"
-    compile 'com.google.protobuf:protobuf-java:3.5.0'
+    compile "io.netifi.proteus:tracing:$proteusVersion"
+    compile "io.netifi.proteus:metrics-micrometer:$proteusVersion"
 
     compile 'org.apache.logging.log4j:log4j-api:2.8.2'
     compile 'org.apache.logging.log4j:log4j-core:2.8.2'

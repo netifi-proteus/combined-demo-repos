@@ -1,7 +1,7 @@
 package io.netifi.proteus.fanout.randomstring;
 
 @javax.annotation.Generated(
-    value = "by Proteus proto compiler (version 0.7.18)",
+    value = "by Proteus proto compiler (version 0.8.5)",
     comments = "Source: io/netifi/proteus/fanout/countvowels/service.proto")
 @io.netifi.proteus.annotations.internal.ProteusGenerated(
     type = io.netifi.proteus.annotations.internal.ProteusResourceType.SERVICE,

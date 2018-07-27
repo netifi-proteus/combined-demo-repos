@@ -9,7 +9,7 @@ import {connectToChatServer} from './actions/chat';
 class App extends Component {
 
   componentDidMount(){
-		this.props.connectToChatServer(`ws://broker.prd.netifi.io:30002/`);
+		this.props.connectToChatServer(`ws://localhost:8101/`);
   }
 
   render(){

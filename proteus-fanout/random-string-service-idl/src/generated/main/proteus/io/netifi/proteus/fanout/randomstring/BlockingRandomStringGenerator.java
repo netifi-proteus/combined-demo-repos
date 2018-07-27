@@ -3,7 +3,7 @@ package io.netifi.proteus.fanout.randomstring;
 /**
  */
 @javax.annotation.Generated(
-    value = "by Proteus proto compiler (version 0.7.18)",
+    value = "by Proteus proto compiler (version 0.8.5)",
     comments = "Source: io/netifi/proteus/fanout/countvowels/service.proto")
 public interface BlockingRandomStringGenerator {
   String SERVICE_ID = "io.netifi.proteus.fanout.randomstring.RandomStringGenerator";
