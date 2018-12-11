@@ -6,11 +6,11 @@
 	"author": "Kyle Bahr <kyle@netifi.com>",
 	"license": "MIT",
 	"scripts": {
-		"protoc": "protoc --proto_path=proto --js_out=import_style=commonjs,binary:src --proteus_out=src --plugin=protoc-gen-proteus=node_modules/.bin/proteus_js_protoc_plugin proto/proteus/*.proto"
+		"protoc": "protoc --proto_path=proto --js_out=import_style=commonjs,binary:src --rsocket_rpc_out=src --plugin=protoc-gen-rsocket_rpc=node_modules/.bin/rsocket_rpc_js_protoc_plugin proto/proteus/*.proto"
 	},
 	"devDependencies": {
 		"lerna": "^2.11.0",
-		"proteus-js-protobuf": "^0.0.4"
+    "rsocket-rpc-protobuf": "^0.1.4"
 	},
 	"dependencies": {
 		"http": "^0.0.0",

@@ -2171,9 +2171,10 @@ expand-brackets@^2.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-expand-template@^1.0.2:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/expand-template/-/expand-template-1.1.1.tgz#981f188c0c3a87d2e28f559bc541426ff94f21dd"
+expand-template@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/expand-template/-/expand-template-2.0.3.tgz#6e14b3fcee0f3a6340ecb57d2e8918692052a47c"
+  integrity sha512-XYfuKMvj4O35f/pOXLObndIRvyQ+/+6AhODh+OKWj9S9498pHHn/IMszH+gt0fBCRWMNfk1ZSp5x3AifmnI2vg==
 
 extend-shallow@^2.0.1:
   version "2.0.1"
@@ -3531,6 +3532,11 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+napi-build-utils@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/napi-build-utils/-/napi-build-utils-1.0.1.tgz#1381a0f92c39d66bf19852e7873432fc2123e508"
+  integrity sha512-boQj1WFgQH3v4clhu3mTNfP+vOBxorDlE8EKiMjUlLG3C4qAESnn9AxIOkFgTR2c9LtzNjPrjS60cT27ZKBhaA==
+
 needle@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/needle/-/needle-2.2.1.tgz#b5e325bd3aae8c2678902fa296f729455d1d3a7d"
@@ -4287,21 +4293,23 @@ postcss@^6.0.1:
     source-map "^0.6.1"
     supports-color "^5.4.0"
 
-prebuild-install@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-4.0.0.tgz#206ce8106ce5efa4b6cf062fc8a0a7d93c17f3a8"
+prebuild-install@^5.1.0:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-5.2.2.tgz#237888f21bfda441d0ee5f5612484390bccd4046"
+  integrity sha512-4e8VJnP3zJdZv/uP0eNWmr2r9urp4NECw7Mt1OSAi3rcLrbBRxGiAkfUFtre2MhQ5wfREAjRV+K1gubvs/GPsA==
   dependencies:
     detect-libc "^1.0.3"
-    expand-template "^1.0.2"
+    expand-template "^2.0.3"
     github-from-package "0.0.0"
     minimist "^1.2.0"
     mkdirp "^0.5.1"
+    napi-build-utils "^1.0.1"
     node-abi "^2.2.0"
     noop-logger "^0.1.1"
     npmlog "^4.0.1"
     os-homedir "^1.0.1"
     pump "^2.0.1"
-    rc "^1.1.6"
+    rc "^1.2.7"
     simple-get "^2.7.0"
     tar-fs "^1.13.0"
     tunnel-agent "^0.6.0"
@@ -4375,13 +4383,6 @@ proteus-js-frames@0.0.3, proteus-js-frames@^0.0.3:
   resolved "https://registry.yarnpkg.com/proteus-js-frames/-/proteus-js-frames-0.0.3.tgz#b7dfe8456582f649e912b1df7b5bd4c23dad12a3"
   dependencies:
     rsocket-core "^0.0.7"
-
-proteus-js-protobuf@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/proteus-js-protobuf/-/proteus-js-protobuf-0.0.8.tgz#edd49a3a15135d619873ba22563ad1463b7fd416"
-  dependencies:
-    cmake-js "^3.6.2"
-    prebuild-install "^4.0.0"
 
 proteus-js-tracing@^0.0.7:
   version "0.0.7"
@@ -4484,7 +4485,7 @@ randomfill@^1.0.3:
     randombytes "^2.0.5"
     safe-buffer "^5.1.0"
 
-rc@^1.1.6, rc@^1.2.7:
+rc@^1.2.7:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
   dependencies:
@@ -4872,6 +4873,14 @@ rsocket-flowable@^0.0.7:
   resolved "https://registry.yarnpkg.com/rsocket-flowable/-/rsocket-flowable-0.0.7.tgz#3eff179dac4986f5e065b98ac1ee1f35865051f4"
   dependencies:
     fbjs "^0.8.12"
+
+rsocket-rpc-protobuf@^0.1.4:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/rsocket-rpc-protobuf/-/rsocket-rpc-protobuf-0.1.5.tgz#5efca2b66b087a2baee2eb5d46d8ee801aaf57e1"
+  integrity sha512-t6l5swZ/K4sGUhSz8853ERJfyiiGjK8D3Eu8W5PK6ppvD8ww41rfLxavMrYs0SJo1Gj/vZB/nk99xWuuOf90Tw==
+  dependencies:
+    cmake-js "^3.6.2"
+    prebuild-install "^5.1.0"
 
 rsocket-types@^0.0.7:
   version "0.0.7"
